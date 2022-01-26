@@ -1,3 +1,7 @@
+from bank import Bank
+
+
+b = Bank()
 # The menu selection
 def menu():
     print("1-Already customer\n2-Create/edit account\n3-Exit")
@@ -14,18 +18,29 @@ def menu():
     # Secound selection
     elif answer == 2:
         print("1-Create account\n2-Create account for existing customer\n3-Edit account info")
+        answer1 = int(input("Enter your choice:\n"))
+        operations = [create_account, make_depOrwith, transactions, get_customers_list]
+        output = operations[answer1 - 1]()
+        output
+        exit = input("Enter R to return or E to exit:\n")
+        if exit.lower() == "r":
+            menu()
+        else:
+            return "Have a nice day!"
+
     else:
         print("Have a nice day!")
 
 
 #Show user account method
 def show_user_account():
-    print("A function will come here soon!\n")
+
+    b.get_customers()
     exit = input("Enter R to return or E to exit:\n")
     if exit.lower() == "r":
         menu()
     else:
-        print("Have a nice day!")
+        return "Have a nice day!"
 
 
 #User make deposit/withdraw method
@@ -48,6 +63,31 @@ def make_depOrwith():
             print("Have a nice day!")
     else:
         menu()
+
+def create_account():
+    pnr = input("Enter your social security number with 10 digits:\n")
+    if len(pnr) != 10:
+        print("I told you 10 digits!\n")
+        pnr = input("Enter your social security number with 10 digits:\n")
+        if len(pnr) != 10:
+            print("Are you messing with me!\nGo back to main menu and follow my instructions\n")
+            menu()
+    if not pnr.isnumeric():
+        print("Don't try to be smarter than my program!\nIt seems you entered letters!\n")
+        pnr = input("Enter your social security number with 10 digits:\n")
+        if len(pnr) != 10:
+            print("Are you messing with me!\nGo back to main menu and follow my instructions\n")
+            menu()
+    username = input("Enter your first name:\n")
+    if not username.isalpha():
+        print("Don't try to be smarter than my program!\nIt seems you entered digits!\n")
+        username = input("Enter your first name:\n")
+        if not username.isalpha():
+            print("Are you messing with me!\nGo back to main menu and follow my instructions\n")
+            menu()
+
+    b.add_customer(username, pnr)
+
 
 #Transaction method
 def transactions():
