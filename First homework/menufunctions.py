@@ -10,16 +10,17 @@ def menu():
     # Diffrent selection regards to user needs
     # First selection
     if answer == 1:
-        print("1-Show my account(s)\n2-Make a deposit/withdraw´\n3-Transactions\n4-List of customers\n5-Exit")
+        print("1-Show my account(s)\n2-Make a deposit/withdraw\n3-List of customers\n4-Exit")
         answer1 = int(input("Enter your choice:\n"))
-        operations = [show_user_account, make_depOrwith, transactions, get_customers_list]
+        operations = [show_user_account, make_depOrwith, get_customers_list]
         output = operations[answer1 - 1]()
         print(output)
+
     # Secound selection
     elif answer == 2:
-        print("1-Create account\n2-Create account for existing customer\n3-Edit account info")
+        print("1-Create customer\n2-Add account for existing customer\n3-Edit customer name\n4-Remove customer")
         answer1 = int(input("Enter your choice:\n"))
-        operations = [create_account, make_depOrwith, transactions, get_customers_list]
+        operations = [create_customer, add_account, edit_info, remove_customer]
         output = operations[answer1 - 1]()
         output
         exit = input("Enter R to return or E to exit:\n")
@@ -34,8 +35,20 @@ def menu():
 
 #Show user account method
 def show_user_account():
-
-    b.get_customers()
+    pnr=input("Enter your social security number with 10 digits:\n")
+    if len(pnr) != 10:
+        print("I told you 10 digits!\n")
+        pnr = input("Enter your social security number with 10 digits:\n")
+        if len(pnr) != 10:
+            print("Are you messing with me!\nGo back to main menu and follow my instructions\n")
+            menu()
+    if not pnr.isnumeric():
+        print("Don't try to be smarter than my program!\nIt seems you entered letters!\n")
+        pnr = input("Enter your social security number with 10 digits:\n")
+        if len(pnr) != 10:
+            print("Are you messing with me!\nGo back to main menu and follow my instructions\n")
+            menu()
+    b.get_customer_by_ssn(pnr)
     exit = input("Enter R to return or E to exit:\n")
     if exit.lower() == "r":
         menu()
@@ -64,7 +77,7 @@ def make_depOrwith():
     else:
         menu()
 
-def create_account():
+def create_customer():
     pnr = input("Enter your social security number with 10 digits:\n")
     if len(pnr) != 10:
         print("I told you 10 digits!\n")
@@ -88,19 +101,62 @@ def create_account():
 
     b.add_customer(username, pnr)
 
+def add_account():
+    pnr = input("Enter your social security number with 10 digits:\n")
+    if len(pnr) != 10:
+        print("I told you 10 digits!\n")
+        pnr = input("Enter your social security number with 10 digits:\n")
+        if len(pnr) != 10:
+            print("Are you messing with me!\nGo back to main menu and follow my instructions\n")
+            menu()
+    if not pnr.isnumeric():
+        print("Don't try to be smarter than my program!\nIt seems you entered letters!\n")
+        pnr = input("Enter your social security number with 10 digits:\n")
+        if len(pnr) != 10:
+            print("Are you messing with me!\nGo back to main menu and follow my instructions\n")
+            menu()
+        b.add_account(pnr)
 
-#Transaction method
-def transactions():
-    print("1-Make a transaction\n2-transaction history\n3-Exit")
-    in_put = int(input("Enter your selection:\n"))
-    if in_put == 1:
-        print("Here will come a function")
-        menu()
-    elif in_put == 2:
-        print("Here will come a function")
-        menu()
-    else:
-        print("Have a nice day!")
+def edit_info():
+    pnr = input("Enter your social security number with 10 digits:\n")
+    if len(pnr) != 10:
+        print("I told you 10 digits!\n")
+        pnr = input("Enter your social security number with 10 digits:\n")
+        if len(pnr) != 10:
+            print("Are you messing with me!\nGo back to main menu and follow my instructions\n")
+            menu()
+    if not pnr.isnumeric():
+        print("Don't try to be smarter than my program!\nIt seems you entered letters!\n")
+        pnr = input("Enter your social security number with 10 digits:\n")
+        if len(pnr) != 10:
+            print("Are you messing with me!\nGo back to main menu and follow my instructions\n")
+            menu()
+    username=input("Enter the new name you want to change to:\n")
+    if not username.isalpha():
+        print("Don't try to be smarter than my program!\nIt seems you entered digits!\n")
+        username = input("Enter your first name:\n")
+        if not username.isalpha():
+            print("Are you messing with me!\nGo back to main menu and follow my instructions\n")
+            menu()
+    b.change_customer_name(username,pnr)
+
+
+def remove_customer():
+    pnr = input("Enter your social security number with 10 digits:\n")
+    if len(pnr) != 10:
+        print("I told you 10 digits!\n")
+        pnr = input("Enter your social security number with 10 digits:\n")
+        if len(pnr) != 10:
+            print("Are you messing with me!\nGo back to main menu and follow my instructions\n")
+            menu()
+    if not pnr.isnumeric():
+        print("Don't try to be smarter than my program!\nIt seems you entered letters!\n")
+        pnr = input("Enter your social security number with 10 digits:\n")
+        if len(pnr) != 10:
+            print("Are you messing with me!\nGo back to main menu and follow my instructions\n")
+            menu()
+
+        b.remove_customer(pnr)
 
 #Function to get all existing customers
 def get_customers_list():

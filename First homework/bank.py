@@ -38,7 +38,11 @@ class Bank:
     def get_customer_by_ssn(self, ssn):
         for x in self.customer_list:
             if x.ssn == ssn:
-                print(x.name, x.ssn)
+                for a in self.account_list:
+                    if a.customer_id == x.id:
+                        print(x.name, x.ssn,a)
+
+
 
     def change_customer_name(self, name, ssn):
         for x in self.customer_list:
@@ -46,13 +50,28 @@ class Bank:
                 x.name = name
                 print("Your new name", name)
                 break
+            else:
+                return False
 
     def remove_customer(self, ssn):
+        balance = 0.0
+        return_list= []
         for x in self.customer_list:
             if x.ssn == ssn:
-                self.customer_list.remove(x)
-                print("Removing accomplish")
-                break
+                index= self.customer_list.index(x)
+                self.customer_list.pop(index)
+
+                for a in self.account_list:
+                    if a.customer_id == x.id:
+                        return_list.append(a)
+                        balance += a.saldo
+                        return_list.append(balance)
+                        index = self.account_list.index(a)
+                        self.account_list.pop(index)
+
+                        for s in return_list:
+                            return s
+
     def add_account(self, ssn):
         temp_list = []
 
