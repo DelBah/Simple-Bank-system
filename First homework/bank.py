@@ -12,7 +12,7 @@ class Bank:
 
     def get_customers(self):
         for x in self.customer_list:
-            print(x.ssn,x.name)
+            print(x.ssn, x.name)
 
 
     #add a customer to the list
@@ -38,9 +38,13 @@ class Bank:
     def get_customer_by_ssn(self, ssn):
         for x in self.customer_list:
             if x.ssn == ssn:
-                for a in self.account_list:
-                    if a.customer_id == x.id:
-                        print(x.name, x.ssn,a)
+                if self.account_list == []:
+                    print("You have not create an account yet!")
+                else:
+                    for a in self.account_list:
+                        if a.customer_id == x.id:
+                                print(x.name, x.ssn, a)
+
 
 
 
@@ -93,29 +97,29 @@ class Bank:
                     return new_acc.ac_number
 
 
-    def get_account(self,ssn, account_id):
+    def get_account(self, ssn, ac_number):
         for c in self.customer_list:
             if c.ssn == ssn:
                 for a in self.account_list:
-                    if a.customer_id == account_id:
+                    if a.ac_number == ac_number:
                         print(a)
 
-    def deposit(self, ssn, account_id, amount):
+    def deposit(self, ssn, ac_number, amount):
         for x in self.customer_list:
             if x.ssn == ssn:
                 for a in self.account_list:
-                    if a.customer_id == account_id:
+                    if a.ac_number == ac_number:
                         a.saldo += amount
                         return True
                     else:
                         return False
 
 
-    def withdraw(self, ssn, account_id, amount):
+    def withdraw(self, ssn, ac_number, amount):
         for x in self.customer_list:
             if x.ssn == ssn:
                 for a in self.account_list:
-                    if a.customer_id == account_id:
+                    if a.ac_number == ac_number:
                         if a.saldo >= amount:
                             a.saldo -= amount
                             return True

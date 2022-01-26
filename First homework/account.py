@@ -13,5 +13,5 @@ class Account:
 
 
     def __str__(self):
-        return f":{self.ac_number}:{self.ac_type}:{self.saldo}"
+        return f":{self.ac_number}:{self.ac_type}:{self.saldo}kr"
 
