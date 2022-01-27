@@ -11,8 +11,11 @@ class Bank:
         #kod here
 
     def get_customers(self):
-        for x in self.customer_list:
-            print(x.ssn, x.name)
+        if self.customer_list == []:
+            return "There isn't customers to show"
+        else:
+            for x in self.customer_list:
+                return x.ssn, x.name
 
 
     #add a customer to the list
@@ -23,7 +26,7 @@ class Bank:
         #do not need to check if customer exist
         if my_list == []:
             my_list.append(c)
-            print("You are a customer now!")
+            return "You are a customer now!"
         else:
             #secound value program execut here
             for x in my_list:
@@ -86,11 +89,7 @@ class Bank:
                         temp_list.append(a)
 
                 if len(temp_list) == 2:
-                    return -1
-                elif len(temp_list) == 1:
-                    new_acc = Account(c.id)
-                    self.account_list.append(new_acc)
-                    return new_acc.ac_number
+                    return "You can only have two accounts"
                 else:
                     new_acc = Account(c.id)
                     self.account_list.append(new_acc)
@@ -102,7 +101,7 @@ class Bank:
             if c.ssn == ssn:
                 for a in self.account_list:
                     if a.ac_number == ac_number:
-                        print(a)
+                        return a
 
     def deposit(self, ssn, ac_number, amount):
         for x in self.customer_list:
@@ -113,6 +112,7 @@ class Bank:
                         return True
                     else:
                         return False
+
 
 
     def withdraw(self, ssn, ac_number, amount):
@@ -127,5 +127,17 @@ class Bank:
                             return False
 
 
-    # def close_account(self, ssn, account_id):
-            #kod here
+    def close_account(self, ssn, account_id):
+        closed_acc=[]
+        ret_saldo= 0.0
+
+        for c in self.customer_list:
+            if c.ssn == ssn:
+                for a in self.account_list:
+                    if a.ac_number == account_id:
+                        ret_saldo = a.saldo
+                        closed_acc.append(a)
+                for s in closed_acc:
+                    return f"Account {s} closed\nSaldo to return={ret_saldo}"
+
+

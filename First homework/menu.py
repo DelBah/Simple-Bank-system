@@ -10,27 +10,27 @@ def menu():
     # Diffrent selection regards to user needs
     # First selection
     if answer == 1:
-        print("1-Show my account(s)\n2-Make a deposit/withdraw\n3-List of customers\n4-Exit")
+        print("1-Show my account(s)\n2-Make a deposit/withdraw\n3-List of customers\n4-Exit/Return\n")
         answer1 = int(input("Enter your choice:\n"))
-        operations = [show_user_account, make_depOrwith, get_customers_list]
+        operations = [show_user_account, make_depOrwith, get_customers_list, exit_meth]
         output = operations[answer1 - 1]()
-        print(output)
+
 
     # Secound selection
     elif answer == 2:
-        print("1-Create customer\n2-Add account for existing customer\n3-Edit customer name\n4-Remove customer")
+        print("1-Create customer\n2-Add account for existing customer\n3-Edit customer name\n4-Remove customer\n5-Exit/Return")
         answer1 = int(input("Enter your choice:\n"))
         operations = [create_customer, add_account, edit_info, remove_customer]
         output = operations[answer1 - 1]()
-        output
-        exit = input("Enter R to return or E to exit:\n")
+        #output
+        exit = input("\nEnter R to return or E to exit:\n")
         if exit.lower() == "r":
             menu()
         else:
             return "Have a nice day!"
 
     else:
-        return "Have a nice day!"
+        print("Have a nice day!")
 
 
 #Show user account method
@@ -197,4 +197,13 @@ def remove_customer():
 
 #Function to get all existing customers
 def get_customers_list():
-    return ""
+    print(b.get_customers())
+
+
+def exit_meth():
+
+    exit = input("\nEnter R to return or E to exit:\n")
+    if exit.lower() == "r":
+        menu()
+    else:
+        print ("Have a nice day!")

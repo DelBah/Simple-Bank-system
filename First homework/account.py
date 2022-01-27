@@ -4,7 +4,7 @@ class Account:
 
 
     def __init__(self, customer_id):
-        self.saldo = 0
+        self.saldo = 0.0
         self.ac_type = "Debit account"
         self.ac_number = next(self.ac_number)
         self.ac_number = 1001 + self.ac_number

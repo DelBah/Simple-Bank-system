@@ -12,16 +12,3 @@ class Customer:
 
     def __str__(self):
         return f"{self.id}:{self.name}:{self.ssn}"
-
-    def set_name(self, new_name):
-        # kode some function
-        self.name = new_name
-
-#     def delete(self):
-#         #write some kod
-#
-#     def create(self):
-#         #write some kod
-
-#     def show_transactions(self):
-#         #some kod here
