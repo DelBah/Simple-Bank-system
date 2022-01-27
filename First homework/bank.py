@@ -104,14 +104,18 @@ class Bank:
                         return a
 
     def deposit(self, ssn, ac_number, amount):
+        empty_list=[]
         for x in self.customer_list:
             if x.ssn == ssn:
                 for a in self.account_list:
                     if a.ac_number == ac_number:
-                        a.saldo += amount
-                        return True
-                    else:
-                        return False
+                        empty_list.append(a)
+                        for s in empty_list:
+                            if a.ac_number == ac_number:
+                                a.saldo += amount
+                                return True
+                            else:
+                                return False
 
 
 
@@ -137,6 +141,7 @@ class Bank:
                     if a.ac_number == account_id:
                         ret_saldo = a.saldo
                         closed_acc.append(a)
+                        self.account_list.remove(a)
                 for s in closed_acc:
                     return f"Account {s} closed\nSaldo to return={ret_saldo}"
 
