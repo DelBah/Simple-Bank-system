@@ -7,15 +7,35 @@ class Bank:
     def __init__(self):
         pass
 
-    # def load(self):
-        #kod here
+    def _load(self):
+        list_info=[]
+        try:
+            f = open ("Customer_bank.txt")
+            for x in f:
+                line = x.strip().split(":")
+                list_info.append(line)
+        finally:
+            f.close()
+
+        return list_info
+
+    def _load_customers(self):
+        data = Bank._load(self)
+        try:
+            for x in data:
+                customer= Customer(x[0],x[1])
+                self.customer_list.append(customer)
+        except:
+            print("something went wrong")
+
 
     def get_customers(self):
-        if self.customer_list == []:
-            return "There isn't customers to show"
-        else:
-            for x in self.customer_list:
-                return x.ssn, x.name
+        ret_list = []
+
+        for x in self.customer_list:
+            ret_list.append(x.name)
+            ret_list.append(x.ssn)
+        return ret_list
 
 
     #add a customer to the list
@@ -104,18 +124,16 @@ class Bank:
                         return a
 
     def deposit(self, ssn, ac_number, amount):
-        empty_list=[]
         for x in self.customer_list:
             if x.ssn == ssn:
                 for a in self.account_list:
                     if a.ac_number == ac_number:
-                        empty_list.append(a)
-                        for s in empty_list:
-                            if a.ac_number == ac_number:
-                                a.saldo += amount
-                                return True
-                            else:
-                                return False
+                        a.saldo += amount
+                        return True
+                    else:
+                        return f"Couldn't find an account with the this account number {ac_number}"
+
+
 
 
 
@@ -127,8 +145,9 @@ class Bank:
                         if a.saldo >= amount:
                             a.saldo -= amount
                             return True
-                        else:
-                            return False
+                    else:
+                        return f"Couldn't find an account with the this account number {ac_number}"
+
 
 
     def close_account(self, ssn, account_id):
@@ -143,6 +162,6 @@ class Bank:
                         closed_acc.append(a)
                         self.account_list.remove(a)
                 for s in closed_acc:
-                    return f"Account {s} closed\nSaldo to return={ret_saldo}"
+                    print(f"Account to close {s} \n Saldo to return = {ret_saldo}")
 
 
