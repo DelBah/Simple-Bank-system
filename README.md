@@ -10,7 +10,8 @@ Målet med applikationen:<br />
 
 Teknologierna som användes:<br />
 IDE: Pycharm<br /> 
-Trello för Milestones och Tasks: https://trello.com/invite/b/TMxx3s67/ac0dbd002fb6644cad2e9de027553f7f/simple-bank<br />
 Programmering språk: Python<br />
+Teknologier i Python: List, for/while loopar och moduler.<br />
 Objektorienterad programmering<br />
+Trello för Milestones och Tasks: https://trello.com/invite/b/TMxx3s67/ac0dbd002fb6644cad2e9de027553f7f/simple-bank<br />
 Klass digaram som finns i githup repo<br />
