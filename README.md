@@ -2,8 +2,8 @@
 Uppgiften bygger på en oäkta bank system som kan hanter kunders konton och information. Applikationen körs bara i konsolen och den har en method som hämtar kunder 
 från en text file(Customer_bank.txt) och registerar de.
 
-Målet med applikationen:\n
-1.Registrera en kund.\n
+Målet med applikationen:<br />
+1.Registrera en kund.<br />
 2.Skapa konto(n). 
 3.Sätta in och ta ut pengar. 
 4.Hantera samt få ut information.
