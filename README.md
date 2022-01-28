@@ -11,6 +11,7 @@ Målet med applikationen:
 Teknologierna som användes:
 IDE:Pycharm 
 Trello för Milestones och Tasks: https://trello.com/invite/b/TMxx3s67/ac0dbd002fb6644cad2e9de027553f7f/simple-bank
-Klass digaram ![This is an image](https://github.com/DelBah/Simple-Bank-system/blob/main/First%20homework/Simple-bank%20diagram.jpg)
 Programmering språk: Python
 Objektorienterad programmering
+
+Klass digaram ![This is an image](https://github.com/DelBah/Simple-Bank-system/blob/main/First%20homework/Simple-bank%20diagram.jpg)
