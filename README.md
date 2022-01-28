@@ -11,6 +11,6 @@ Målet med applikationen:
 Teknologierna som användes:
 IDE:Pycharm 
 Trello för Milestones och Tasks: https://trello.com/invite/b/TMxx3s67/ac0dbd002fb6644cad2e9de027553f7f/simple-bank
-Klass digaram
+Klass digaram ![This is an image](https://myoctocat.com/assets/images/base-octocat.svg)
 Programmering språk: Python
 Objektorienterad programmering
