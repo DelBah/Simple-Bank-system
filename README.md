@@ -9,7 +9,7 @@ Målet med applikationen:<br />
 4.Hantera samt få ut information.<br />
 
 Teknologierna som användes:<br />
-IDE:Pycharm<br /> 
+IDE: Pycharm<br /> 
 Trello för Milestones och Tasks: https://trello.com/invite/b/TMxx3s67/ac0dbd002fb6644cad2e9de027553f7f/simple-bank<br />
 Programmering språk: Python<br />
 Objektorienterad programmering<br />
